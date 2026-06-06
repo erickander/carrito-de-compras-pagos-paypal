@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title><?php echo isset($titulo) ? sanitizar($titulo) : 'Tienda de Tecnología'; ?></title>
+    <title><?php echo isset($titulo) ? sanitizar($titulo) : 'Tienda de Tecnologia'; ?></title>
     <link rel="stylesheet" href="<?php echo BASE_URL; ?>/css/style.css">
 </head>
 <body>
@@ -12,14 +12,14 @@
             <div class="container">
                 <div class="navbar-brand">
                     <a href="<?php echo BASE_URL; ?>/index.php">
-                        <h1>🛍️ TechShop</h1>
+                        <h1>TechShop</h1>
                     </a>
                 </div>
 
                 <ul class="nav-menu">
                     <li><a href="<?php echo BASE_URL; ?>/index.php">Inicio</a></li>
                     <li>
-                        <a href="#">Categorías ▼</a>
+                        <a href="#">Categorias</a>
                         <ul class="submenu">
                             <?php
                             require_once 'funciones.php';
@@ -36,7 +36,7 @@
 
                 <div class="navbar-right">
                     <a href="<?php echo BASE_URL; ?>/carrito.php" class="carrito-btn">
-                        🛒 Carrito
+                        Carrito
                         <span id="carrito-count" class="carrito-count">0</span>
                     </a>
                 </div>

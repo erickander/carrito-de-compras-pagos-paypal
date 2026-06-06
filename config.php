@@ -46,7 +46,7 @@ define(
 // URL BASE
 // =========================
 
-define('BASE_URL', 'http://127.0.0.1/tienda');
+define('BASE_URL', 'http://localhost/tienda');
 
 // =========================
 // ZONA HORARIA

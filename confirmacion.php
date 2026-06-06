@@ -1,44 +1,22 @@
 <?php
 require_once 'config.php';
+require_once 'includes/funciones.php';
 
 $order_id = $_GET['order_id'] ?? '';
+$titulo = 'Pago Completado - TechShop';
+
+require_once 'includes/header.php';
 ?>
 
-<!DOCTYPE html>
-<html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <title>Pago Completado</title>
+<section class="confirmacion-contenedor">
+    <p class="section-kicker">PayPal</p>
+    <h2 class="confirmacion-titulo">Pago realizado correctamente</h2>
+    <p class="confirmacion-numero">Orden: <strong><?php echo sanitizar($order_id); ?></strong></p>
+    <div class="confirmacion-detalles">
+        <p>Gracias por comprar en TechShop.</p>
+        <p>Tu pago fue aprobado y registrado por PayPal.</p>
+    </div>
+    <a href="<?php echo BASE_URL; ?>/index.php" class="btn btn-primary">Volver al catalogo</a>
+</section>
 
-    <style>
-
-        body{
-            font-family:Arial;
-            text-align:center;
-            padding:50px;
-        }
-
-        .ok{
-            color:green;
-            font-size:25px;
-        }
-
-    </style>
-
-</head>
-<body>
-
-<div class="ok">
-    ✅ Pago realizado correctamente
-</div>
-
-<br>
-
-Orden:
-
-<strong>
-    <?php echo htmlspecialchars($order_id); ?>
-</strong>
-
-</body>
-</html>
+<?php require_once 'includes/footer.php'; ?>

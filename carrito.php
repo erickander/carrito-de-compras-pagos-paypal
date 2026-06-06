@@ -11,10 +11,15 @@ require_once 'includes/header.php';
 ?>
 
 <section class="carrito-contenedor">
-    <h2 style="margin-bottom: 30px;">🛒 Carrito de Compras</h2>
+    <div class="catalogo-header">
+        <div>
+            <p class="section-kicker">Resumen de compra</p>
+            <h2>Carrito de Compras</h2>
+        </div>
+    </div>
 
     <?php if (count($carrito) > 0): ?>
-        <div style="overflow-x: auto;">
+        <div class="tabla-scroll">
             <table class="carrito-tabla">
                 <thead>
                     <tr>
@@ -33,13 +38,13 @@ require_once 'includes/header.php';
                         ?>
                         <tr>
                             <td>
-                                <div style="display: flex; align-items: center; gap: 15px;">
-                                    <div class="producto-imagen" style="width: 60px; height: 60px; flex-shrink: 0;">
+                                <div class="carrito-producto">
+                                    <div class="producto-imagen carrito-miniatura">
                                         <?php if ($item['imagen']): ?>
                                             <img src="<?php echo sanitizar($item['imagen']); ?>"
                                                  alt="<?php echo sanitizar($item['nombre']); ?>">
                                         <?php else: ?>
-                                            📱
+                                            <span>Sin imagen</span>
                                         <?php endif; ?>
                                     </div>
                                     <span><?php echo sanitizar($item['nombre']); ?></span>
@@ -49,17 +54,16 @@ require_once 'includes/header.php';
                             <td>
                                 <input type="number"
                                        class="cantidad-input"
-                                       value="<?php echo $item['cantidad']; ?>"
+                                       value="<?php echo (int)$item['cantidad']; ?>"
                                        min="1"
-                                       max="<?php echo $item['stock']; ?>"
+                                       max="<?php echo (int)$item['stock']; ?>"
                                        onchange="actualizarCantidad(<?php echo $item['id']; ?>, this.value)">
                             </td>
                             <td>$<?php echo number_format($subtotal, 2); ?></td>
                             <td>
-                                <button class="btn btn-danger"
-                                        style="padding: 8px 12px; font-size: 12px;"
+                                <button class="btn btn-danger btn-small"
                                         onclick="eliminarDelCarrito(<?php echo $item['id']; ?>)">
-                                    🗑️ Eliminar
+                                    Eliminar
                                 </button>
                             </td>
                         </tr>
@@ -75,23 +79,16 @@ require_once 'includes/header.php';
             </div>
 
             <div class="carrito-botones">
-                <a href="<?php echo BASE_URL; ?>/index.php" class="btn btn-secondary">
-                    ← Continuar Comprando
-                </a>
-                <a href="<?php echo BASE_URL; ?>/checkout.php" class="btn btn-success">
-                    Ir a Checkout →
-                </a>
+                <a href="<?php echo BASE_URL; ?>/index.php" class="btn btn-secondary">Continuar Comprando</a>
+                <a href="<?php echo BASE_URL; ?>/checkout.php" class="btn btn-success">Ir a Checkout</a>
             </div>
         </div>
 
     <?php else: ?>
         <div class="carrito-vacio">
-            <p style="font-size: 48px; margin-bottom: 10px;">🛒</p>
-            <p>Tu carrito está vacío</p>
-            <a href="<?php echo BASE_URL; ?>/index.php" class="btn btn-primary"
-               style="display: inline-block; margin-top: 20px; text-decoration: none;">
-                Ir al Catálogo
-            </a>
+            <p class="empty-icon">Carrito vacio</p>
+            <p>Tu carrito esta vacio</p>
+            <a href="<?php echo BASE_URL; ?>/index.php" class="btn btn-primary">Ir al Catalogo</a>
         </div>
     <?php endif; ?>
 </section>
